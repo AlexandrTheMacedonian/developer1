@@ -5,6 +5,7 @@
 
     <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
 
+
     <bean id="main" class="ua.goit.java.jdbc.Main">
         <property name="controller" ref="controller"/>
     </bean>
@@ -14,7 +15,7 @@
         <property name="dao" ref="dao"/>
     </bean>
 
-    <bean class="ua.goit.java.jdbc.model.jdbc.jdbcDAO" id="dao">
+    <bean class="ua.goit.java.jdbc.model.jdbc.jdbcDeveloperDAO" id="dao">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 

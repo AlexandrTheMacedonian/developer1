@@ -3,6 +3,23 @@ package ua.goit.java.jdbc.model;
 /**
  * Created by alexandrsemenov on 27.02.17.
  */
-public enum Skills {
-    JAVA, PYTHON, CPP
+public class Skills {
+    private int id;
+    private String name;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

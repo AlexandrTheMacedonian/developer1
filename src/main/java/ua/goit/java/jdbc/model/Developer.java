@@ -1,6 +1,8 @@
 package ua.goit.java.jdbc.model;
 
-import java.util.Set;
+import java.math.BigDecimal;
+import java.text.Bidi;
+import java.util.Collection;
 
 /**
  * Created by alexandrsemenov on 27.02.17.
@@ -9,8 +11,8 @@ public class Developer {
     private int id;
     private String name;
     private int phone;
-    private long salary;
-    private Set<Skills> skills;
+    private BigDecimal salary;
+    private Collection<Skills> skills;
 
     @Override
     public String toString() {
@@ -47,19 +49,19 @@ public class Developer {
         this.phone = phone;
     }
 
-    public long getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(long salary) {
+    public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
 
-    public Set<Skills> getSkills() {
+    public Collection<Skills> getSkills() {
         return skills;
     }
 
-    public void setSkills(Set<Skills> skills) {
+    public void setSkills(Collection<Skills> skills) {
         this.skills = skills;
     }
 }
