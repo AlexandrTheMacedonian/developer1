@@ -1,0 +1,111 @@
+CREATE SCHEMA IF NOT EXISTS `GoIT` DEFAULT CHARACTER SET utf8 ;
+USE `GoIT` ;
+
+CREATE TABLE IF NOT EXISTS `GoIT`.`projects` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+  ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `GoIT`.`developers` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `phone` INT NULL,
+  PRIMARY KEY (`id`, `name`))
+  ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `GoIT`.`skills` (
+  `id` INT NOT NULL COMMENT '	',
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`, `name`))
+  ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `GoIT`.`companies` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`, `name`))
+  ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `GoIT`.`customers` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`, `name`))
+  ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `GoIT`.`proj-dev` (
+  `prjID` INT NOT NULL,
+  `devID` INT NOT NULL,
+  PRIMARY KEY (`devID`),
+  INDEX `FK_PD_DEV_ID_idx` (`devID` ASC),
+  CONSTRAINT `FK_PD_PRJ_ID`
+  FOREIGN KEY (`prjID`)
+  REFERENCES `GoIT`.`projects` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_PD_DEV_ID`
+  FOREIGN KEY (`devID`)
+  REFERENCES `GoIT`.`developers` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+  ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `GoIT`.`dev_skill` (
+  `devID` INT NOT NULL,
+  `skillID` INT NOT NULL,
+  INDEX `FK_DS_DEV_ID_idx` (`devID` ASC),
+  INDEX `FK_DS_SKILL_ID_idx` (`skillID` ASC),
+  CONSTRAINT `FK_DS_DEV_ID`
+  FOREIGN KEY (`devID`)
+  REFERENCES `GoIT`.`developers` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_DS_SKILL_ID`
+  FOREIGN KEY (`skillID`)
+  REFERENCES `GoIT`.`skills` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+  ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `GoIT`.`dev_comp` (
+  `devId` INT NOT NULL,
+  `compID` INT NOT NULL,
+  INDEX `FK_DC_DEV_ID_idx` (`devId` ASC),
+  INDEX `FK_DC_COMP_ID_idx` (`compID` ASC),
+  PRIMARY KEY (`devId`),
+  CONSTRAINT `FK_DC_DEV_ID`
+  FOREIGN KEY (`devId`)
+  REFERENCES `GoIT`.`developers` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_DC_COMP_ID`
+  FOREIGN KEY (`compID`)
+  REFERENCES `GoIT`.`companies` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+  ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `GoIT`.`prj_cust` (
+  `prjID` INT NOT NULL,
+  `custID` INT NOT NULL,
+  INDEX `FK_PC_PRJ_ID_idx` (`prjID` ASC),
+  INDEX `FK_PC_CUST_ID_idx` (`custID` ASC),
+  PRIMARY KEY (`prjID`),
+  CONSTRAINT `FK_PC_PRJ_ID`
+  FOREIGN KEY (`prjID`)
+  REFERENCES `GoIT`.`projects` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_PC_CUST_ID`
+  FOREIGN KEY (`custID`)
+  REFERENCES `GoIT`.`customers` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+  ENGINE = InnoDB;
