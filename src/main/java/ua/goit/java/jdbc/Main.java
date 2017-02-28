@@ -27,7 +27,6 @@ public class Main {
     }
 
     private void start() throws SQLException {
-
         controller.createProject(15, "Project1", 5000, new ArrayList<>());
         controller.createDeveloper(15, "Alex", 38088888, 7500, new ArrayList<>());
         System.out.println(controller.getDeveloperByID(1));
