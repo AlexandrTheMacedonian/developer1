@@ -27,6 +27,7 @@ public class jdbcDeveloperDAOTest extends TestCase {
         developer.setSalary(new BigDecimal(55555));
         ArrayList<Skill> skills = new ArrayList<>();
         skills.add(new Skill());
+        developer.setSkills(skills);
 
         Assert.assertEquals(developer, developerDAO.create(10, "Alex", 38088888, new BigDecimal(55555), skills));
     }
