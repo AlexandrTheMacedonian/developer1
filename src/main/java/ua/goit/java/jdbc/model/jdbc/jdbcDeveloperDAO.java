@@ -24,7 +24,6 @@ public class jdbcDeveloperDAO implements DeveloperDAO {
     private static final Logger LOGGER = LoggerFactory.getLogger(jdbcDeveloperDAO.class);
 
 
-//@Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteById(int id) {
         String SQL = "DELETE FROM developers WHERE id = ?";
         try (Connection connection = dataSource.getConnection();
