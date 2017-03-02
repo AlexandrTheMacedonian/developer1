@@ -1,6 +1,8 @@
 package ua.goit.java.jdbc;
 
 import javafx.application.Application;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ua.goit.java.jdbc.controllers.Controller;
@@ -17,8 +19,10 @@ import java.util.ArrayList;
  */
 public class Main {
 
-    private Controller controller;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+
+    private Controller controller;
 
     public static void main(String[] args) throws SQLException {
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
@@ -39,3 +43,4 @@ public class Main {
         this.controller = controller;
     }
 }
+
