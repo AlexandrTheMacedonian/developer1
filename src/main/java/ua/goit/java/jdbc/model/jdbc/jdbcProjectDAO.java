@@ -3,7 +3,6 @@ package ua.goit.java.jdbc.model.jdbc;
 import ua.goit.java.jdbc.model.Developer;
 import ua.goit.java.jdbc.model.Project;
 import ua.goit.java.jdbc.model.ProjectDAO;
-import ua.goit.java.jdbc.model.Skills;
 
 import java.math.BigDecimal;
 import java.sql.Connection;

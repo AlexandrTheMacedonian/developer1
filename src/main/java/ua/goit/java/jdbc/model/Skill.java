@@ -3,7 +3,7 @@ package ua.goit.java.jdbc.model;
 /**
  * Created by alexandrsemenov on 27.02.17.
  */
-public class Skills {
+public class Skill {
     private int id;
     private String name;
 

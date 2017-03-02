@@ -1,16 +1,12 @@
 package ua.goit.java.jdbc;
 
-import javafx.application.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ua.goit.java.jdbc.controllers.Controller;
-import ua.goit.java.jdbc.model.DeveloperDAO;
-import ua.goit.java.jdbc.model.Skills;
-import ua.goit.java.jdbc.model.jdbc.jdbcDeveloperDAO;
 
-import java.awt.*;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -31,8 +27,8 @@ public class Main {
     }
 
     private void start() throws SQLException {
-        //controller.createProject(15, "Project1", 5000, new ArrayList<>());
-        //controller.createDeveloper(15, "Alex", 38088888, 7500, new ArrayList<>());
+        controller.createProject(15, "Project1", new BigDecimal(5500), new ArrayList<>());
+        controller.createDeveloper(15, "Alex", 38088888, new BigDecimal(7500), new ArrayList<>());
         System.out.println(controller.getDeveloperByID(1));
         System.out.println(controller.getProjectByID(1));
         controller.deleteDeveloper(15);

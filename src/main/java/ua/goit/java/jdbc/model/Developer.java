@@ -1,7 +1,6 @@
 package ua.goit.java.jdbc.model;
 
 import java.math.BigDecimal;
-import java.text.Bidi;
 import java.util.Collection;
 
 /**
@@ -12,7 +11,7 @@ public class Developer {
     private String name;
     private int phone;
     private BigDecimal salary;
-    private Collection<Skills> skills;
+    private Collection<Skill> skills;
 
     @Override
     public String toString() {
@@ -57,11 +56,11 @@ public class Developer {
         this.salary = salary;
     }
 
-    public Collection<Skills> getSkills() {
+    public Collection<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(Collection<Skills> skills) {
+    public void setSkills(Collection<Skill> skills) {
         this.skills = skills;
     }
 }
