@@ -2,6 +2,7 @@ package ua.goit.java.jdbc.model.jdbc;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
+import org.junit.Test;
 import ua.goit.java.jdbc.model.Developer;
 import ua.goit.java.jdbc.model.Skill;
 
@@ -13,11 +14,13 @@ import java.util.ArrayList;
  */
 public class jdbcDeveloperDAOTest extends TestCase {
 
+    @Test
     public void testDeleteById() throws Exception {
         jdbcDeveloperDAO developerDAO = new jdbcDeveloperDAO();
         Assert.assertEquals(1, developerDAO.deleteById(1));
     }
 
+    @Test
     public void testCreate() throws Exception {
         jdbcDeveloperDAO developerDAO = new jdbcDeveloperDAO();
         Developer developer = new Developer();
