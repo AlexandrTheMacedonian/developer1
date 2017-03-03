@@ -74,7 +74,6 @@ public class jdbcDeveloperDAO implements DeveloperDAO {
             } catch (SQLException e1) {
                 LOGGER.error("Exception occurred while rollback.");
             }
-            LOGGER.error("Exception occurred while connecting to DB");
         } finally {
             if (connection != null) {
                 try {
