@@ -27,12 +27,7 @@ public class Main {
     }
 
     private void start() throws SQLException {
-        controller.createProject(15, "Project1", new BigDecimal(5500), new ArrayList<>());
-        controller.createDeveloper(15, "Alex", 38088888, new BigDecimal(7500), new ArrayList<>());
-        System.out.println(controller.getDeveloperByID(1));
-        System.out.println(controller.getProjectByID(1));
         controller.deleteDeveloper(15);
-        controller.deleteProject(15);
     }
 
     public void setController(Controller controller) {

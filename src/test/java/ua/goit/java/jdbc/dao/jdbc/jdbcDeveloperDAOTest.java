@@ -1,4 +1,4 @@
-package ua.goit.java.jdbc.model.jdbc;
+package ua.goit.java.jdbc.dao.jdbc;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
@@ -34,5 +34,4 @@ public class jdbcDeveloperDAOTest extends TestCase {
 
         Assert.assertEquals(developer, developerDAO.create(10, "Alex", 38088888, new BigDecimal(55555), skills));
     }
-
 }

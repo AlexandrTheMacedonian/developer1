@@ -4,7 +4,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ua.goit.java.jdbc.model.*;
-import ua.goit.java.jdbc.model.DeveloperDAO;
+import ua.goit.java.jdbc.dao.DeveloperDAO;
+import ua.goit.java.jdbc.dao.jdbc.jdbcDeveloperDAO;
+import ua.goit.java.jdbc.dao.jdbc.jdbcProjectDAO;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
@@ -15,8 +17,8 @@ import java.util.Collection;
  */
 public class Controller {
     private PlatformTransactionManager txManager;
-    private DeveloperDAO developerDAO;
-    private ProjectDAO projectDAO;
+    private jdbcDeveloperDAO developerDAO;
+    private jdbcProjectDAO projectDAO;
 
     public void deleteDeveloper(int id) throws SQLException {
         developerDAO.deleteById(id);
@@ -26,12 +28,12 @@ public class Controller {
         projectDAO.deleteById(id);
     }
 
-    public void createProject(int id, String name, BigDecimal cost, Collection<Developer> developers) {
-        projectDAO.create(id, name, cost, developers);
+    public Project createProject(int id, String name, BigDecimal cost, Collection<Developer> developers) {
+        return projectDAO.create(id, name, cost, developers);
     }
 
-    public void createDeveloper(int id, String name, int phone, BigDecimal salary, Collection<Skill> skills){
-        developerDAO.create(id, name, phone, salary, skills);
+    public Developer createDeveloper(int id, String name, int phone, BigDecimal salary, Collection<Skill> skills){
+        return developerDAO.create(id, name, phone, salary, skills);
     }
 
     public Project getProjectByID(int id) throws SQLException {
@@ -60,6 +62,6 @@ public class Controller {
     }
 
     public void setDao(DeveloperDAO dao) {
-        this.developerDAO = dao;
+        this.developerDAO = (jdbcDeveloperDAO) dao;
     }
 }

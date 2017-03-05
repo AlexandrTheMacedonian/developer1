@@ -1,219 +1,259 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="MySQL - @localhost">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
-    <schema id="1" name="GoIT">
-      <visible>1</visible>
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="GoIT">
+      <Current>1</Current>
+      <Visible>1</Visible>
     </schema>
-    <schema id="2" name="information_schema"/>
-    <schema id="3" name="MyDB"/>
-    <schema id="4" name="mysql"/>
-    <schema id="5" name="performance_schema"/>
-    <schema id="6" name="sys"/>
-    <table id="7" parent="1" name="companies"/>
-    <table id="8" parent="1" name="customers"/>
-    <table id="9" parent="1" name="dev_comp"/>
-    <table id="10" parent="1" name="dev_skill"/>
-    <table id="11" parent="1" name="developers"/>
-    <table id="12" parent="1" name="prj_cust"/>
-    <table id="13" parent="1" name="proj_dev"/>
-    <table id="14" parent="1" name="projects"/>
-    <table id="15" parent="1" name="skills"/>
-    <column id="16" parent="7" name="id">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="MyDB"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="sys"/>
+    <table id="8" parent="2" name="companies"/>
+    <table id="9" parent="2" name="customers"/>
+    <table id="10" parent="2" name="dev_comp"/>
+    <table id="11" parent="2" name="dev_skill"/>
+    <table id="12" parent="2" name="developers"/>
+    <table id="13" parent="2" name="prj_cust"/>
+    <table id="14" parent="2" name="proj_dev"/>
+    <table id="15" parent="2" name="projects"/>
+    <table id="16" parent="2" name="skills"/>
+    <column id="17" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="17" parent="7" name="name">
-      <mandatory>1</mandatory>
-      <data-type>varchar(45)|0</data-type>
+    <column id="18" parent="8" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <key id="18" parent="7" name="PRIMARY">
-      <columns>id
-name</columns>
-      <primary>1</primary>
+    <key id="19" parent="8" name="PRIMARY">
+      <ColNames>id
+name</ColNames>
+      <Primary>1</Primary>
     </key>
-    <column id="19" parent="8" name="id">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="20" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="20" parent="8" name="name">
-      <mandatory>1</mandatory>
-      <data-type>varchar(45)|0</data-type>
+    <column id="21" parent="9" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <key id="21" parent="8" name="PRIMARY">
-      <columns>id
-name</columns>
-      <primary>1</primary>
+    <key id="22" parent="9" name="PRIMARY">
+      <ColNames>id
+name</ColNames>
+      <Primary>1</Primary>
     </key>
-    <column id="22" parent="9" name="devId">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="23" parent="10" name="devId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="9" name="compID">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="24" parent="10" name="compID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <index id="24" parent="9" name="FK_DC_COMP_ID_idx">
-      <columns>compID</columns>
-      <desc-columns></desc-columns>
+    <index id="25" parent="10" name="FK_DC_COMP_ID_idx">
+      <ColNames>compID</ColNames>
     </index>
-    <index id="25" parent="9" name="FK_DC_DEV_ID_idx">
-      <columns>devId</columns>
-      <desc-columns></desc-columns>
+    <index id="26" parent="10" name="FK_DC_DEV_ID_idx">
+      <ColNames>devId</ColNames>
     </index>
-    <key id="26" parent="9" name="PRIMARY">
-      <columns>devId</columns>
-      <primary>1</primary>
+    <key id="27" parent="10" name="PRIMARY">
+      <ColNames>devId</ColNames>
+      <Primary>1</Primary>
     </key>
-    <foreign-key id="27" parent="9" name="FK_DC_DEV_ID">
-      <columns>devId</columns>
-      <ref-key>GoIT.developers(id)</ref-key>
-      <cascade-update-rule>no_action</cascade-update-rule>
-      <cascade-delete-rule>no_action</cascade-delete-rule>
+    <foreign-key id="28" parent="10" name="FK_DC_DEV_ID">
+      <ColNames>devId</ColNames>
+      <RefSchemaName>GoIT</RefSchemaName>
+      <RefTableName>developers</RefTableName>
+      <RefKeyName>developers</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="28" parent="9" name="FK_DC_COMP_ID">
-      <columns>compID</columns>
-      <ref-key>GoIT.companies(id)</ref-key>
-      <cascade-update-rule>no_action</cascade-update-rule>
-      <cascade-delete-rule>no_action</cascade-delete-rule>
+    <foreign-key id="29" parent="10" name="FK_DC_COMP_ID">
+      <ColNames>compID</ColNames>
+      <RefSchemaName>GoIT</RefSchemaName>
+      <RefTableName>companies</RefTableName>
+      <RefKeyName>companies</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="29" parent="10" name="devID">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="30" parent="11" name="devID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="30" parent="10" name="skillID">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="31" parent="11" name="skillID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <index id="31" parent="10" name="FK_DS_DEV_ID_idx">
-      <columns>devID</columns>
-      <desc-columns></desc-columns>
+    <index id="32" parent="11" name="FK_DS_DEV_ID_idx">
+      <ColNames>devID</ColNames>
     </index>
-    <index id="32" parent="10" name="FK_DS_SKILL_ID_idx">
-      <columns>skillID</columns>
-      <desc-columns></desc-columns>
+    <index id="33" parent="11" name="FK_DS_SKILL_ID_idx">
+      <ColNames>skillID</ColNames>
     </index>
-    <foreign-key id="33" parent="10" name="FK_DS_DEV_ID">
-      <columns>devID</columns>
-      <ref-key>GoIT.developers(id)</ref-key>
-      <cascade-update-rule>no_action</cascade-update-rule>
-      <cascade-delete-rule>no_action</cascade-delete-rule>
+    <foreign-key id="34" parent="11" name="FK_DS_DEV_ID">
+      <ColNames>devID</ColNames>
+      <RefSchemaName>GoIT</RefSchemaName>
+      <RefTableName>developers</RefTableName>
+      <RefKeyName>developers</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="34" parent="10" name="FK_DS_SKILL_ID">
-      <columns>skillID</columns>
-      <ref-key>GoIT.skills(id)</ref-key>
-      <cascade-update-rule>no_action</cascade-update-rule>
-      <cascade-delete-rule>no_action</cascade-delete-rule>
+    <foreign-key id="35" parent="11" name="FK_DS_SKILL_ID">
+      <ColNames>skillID</ColNames>
+      <RefSchemaName>GoIT</RefSchemaName>
+      <RefTableName>skills</RefTableName>
+      <RefKeyName>skills</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="35" parent="11" name="id">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="36" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="36" parent="11" name="name">
-      <mandatory>1</mandatory>
-      <data-type>varchar(45)|0</data-type>
+    <column id="37" parent="12" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="37" parent="11" name="phone">
-      <data-type>int(11)|0</data-type>
+    <column id="38" parent="12" name="phone">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
     </column>
-    <column id="38" parent="11" name="salary">
-      <data-type>decimal(10)|0</data-type>
+    <column id="39" parent="12" name="salary">
+      <Position>4</Position>
+      <DataType>decimal(10)|0</DataType>
     </column>
-    <key id="39" parent="11" name="PRIMARY">
-      <columns>id
-name</columns>
-      <primary>1</primary>
+    <key id="40" parent="12" name="PRIMARY">
+      <ColNames>id
+name</ColNames>
+      <Primary>1</Primary>
     </key>
-    <column id="40" parent="12" name="prjID">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="41" parent="13" name="prjID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="41" parent="12" name="custID">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="42" parent="13" name="custID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <index id="42" parent="12" name="FK_PC_CUST_ID_idx">
-      <columns>custID</columns>
-      <desc-columns></desc-columns>
+    <index id="43" parent="13" name="FK_PC_CUST_ID_idx">
+      <ColNames>custID</ColNames>
     </index>
-    <index id="43" parent="12" name="FK_PC_PRJ_ID_idx">
-      <columns>prjID</columns>
-      <desc-columns></desc-columns>
+    <index id="44" parent="13" name="FK_PC_PRJ_ID_idx">
+      <ColNames>prjID</ColNames>
     </index>
-    <key id="44" parent="12" name="PRIMARY">
-      <columns>prjID</columns>
-      <primary>1</primary>
+    <key id="45" parent="13" name="PRIMARY">
+      <ColNames>prjID</ColNames>
+      <Primary>1</Primary>
     </key>
-    <foreign-key id="45" parent="12" name="FK_PC_PRJ_ID">
-      <columns>prjID</columns>
-      <ref-key>~.projects.PRIMARY</ref-key>
-      <cascade-update-rule>no_action</cascade-update-rule>
-      <cascade-delete-rule>no_action</cascade-delete-rule>
+    <foreign-key id="46" parent="13" name="FK_PC_PRJ_ID">
+      <ColNames>prjID</ColNames>
+      <RefSchemaName>GoIT</RefSchemaName>
+      <RefTableName>projects</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="46" parent="12" name="FK_PC_CUST_ID">
-      <columns>custID</columns>
-      <ref-key>GoIT.customers(id)</ref-key>
-      <cascade-update-rule>no_action</cascade-update-rule>
-      <cascade-delete-rule>no_action</cascade-delete-rule>
+    <foreign-key id="47" parent="13" name="FK_PC_CUST_ID">
+      <ColNames>custID</ColNames>
+      <RefSchemaName>GoIT</RefSchemaName>
+      <RefTableName>customers</RefTableName>
+      <RefKeyName>customers</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="47" parent="13" name="prjID">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="48" parent="14" name="prjID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="48" parent="13" name="devID">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="49" parent="14" name="devID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <index id="49" parent="13" name="FK_PD_DEV_ID_idx">
-      <columns>devID</columns>
-      <desc-columns></desc-columns>
+    <index id="50" parent="14" name="FK_PD_DEV_ID_idx">
+      <ColNames>devID</ColNames>
     </index>
-    <index id="50" parent="13" name="FK_PD_PRJ_ID">
-      <columns>prjID</columns>
-      <desc-columns></desc-columns>
+    <index id="51" parent="14" name="FK_PD_PRJ_ID">
+      <ColNames>prjID</ColNames>
     </index>
-    <key id="51" parent="13" name="PRIMARY">
-      <columns>devID</columns>
-      <primary>1</primary>
+    <key id="52" parent="14" name="PRIMARY">
+      <ColNames>devID</ColNames>
+      <Primary>1</Primary>
     </key>
-    <foreign-key id="52" parent="13" name="FK_PD_PRJ_ID">
-      <columns>prjID</columns>
-      <ref-key>~.projects.PRIMARY</ref-key>
-      <cascade-update-rule>no_action</cascade-update-rule>
-      <cascade-delete-rule>no_action</cascade-delete-rule>
+    <foreign-key id="53" parent="14" name="FK_PD_PRJ_ID">
+      <ColNames>prjID</ColNames>
+      <RefSchemaName>GoIT</RefSchemaName>
+      <RefTableName>projects</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <foreign-key id="53" parent="13" name="FK_PD_DEV_ID">
-      <columns>devID</columns>
-      <ref-key>GoIT.developers(id)</ref-key>
-      <cascade-update-rule>no_action</cascade-update-rule>
-      <cascade-delete-rule>no_action</cascade-delete-rule>
+    <foreign-key id="54" parent="14" name="FK_PD_DEV_ID">
+      <ColNames>devID</ColNames>
+      <RefSchemaName>GoIT</RefSchemaName>
+      <RefTableName>developers</RefTableName>
+      <RefKeyName>developers</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
     </foreign-key>
-    <column id="54" parent="14" name="id">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="55" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="55" parent="14" name="name">
-      <mandatory>1</mandatory>
-      <data-type>varchar(45)|0</data-type>
+    <column id="56" parent="15" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="56" parent="14" name="cost">
-      <data-type>decimal(10)|0</data-type>
+    <column id="57" parent="15" name="cost">
+      <Position>3</Position>
+      <DataType>decimal(10)|0</DataType>
     </column>
-    <key id="57" parent="14" name="PRIMARY">
-      <columns>id</columns>
-      <primary>1</primary>
+    <key id="58" parent="15" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
     </key>
-    <column id="58" parent="15" name="id">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="59" parent="16" name="id">
+      <Position>1</Position>
+      <Comment>	</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="59" parent="15" name="name">
-      <mandatory>1</mandatory>
-      <data-type>varchar(45)|0</data-type>
+    <column id="60" parent="16" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <key id="60" parent="15" name="PRIMARY">
-      <columns>id
-name</columns>
-      <primary>1</primary>
+    <key id="61" parent="16" name="PRIMARY">
+      <ColNames>id
+name</ColNames>
+      <Primary>1</Primary>
     </key>
   </database-model>
 </dataSource>

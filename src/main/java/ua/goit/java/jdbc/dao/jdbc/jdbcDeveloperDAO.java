@@ -1,8 +1,8 @@
-package ua.goit.java.jdbc.model.jdbc;
+package ua.goit.java.jdbc.dao.jdbc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ua.goit.java.jdbc.model.DeveloperDAO;
+import ua.goit.java.jdbc.dao.DeveloperDAO;
 import ua.goit.java.jdbc.model.Developer;
 import ua.goit.java.jdbc.model.Skill;
 
@@ -42,13 +42,16 @@ public class jdbcDeveloperDAO implements DeveloperDAO {
         try {
             connection = dataSource.getConnection();
             connection.setAutoCommit(false);
-
-            try (PreparedStatement ps = connection.prepareStatement(INSERT_SQL)) {
-                ps.setInt(1, id);
-                ps.setString(2, name);
-                ps.setInt(3, phone);
-                ps.setBigDecimal(4, salary);
-                ps.executeUpdate();
+            if (id!=0 && name!=null && phone!=0 && salary!=null) {
+                try (PreparedStatement ps = connection.prepareStatement(INSERT_SQL)) {
+                    ps.setInt(1, id);
+                    ps.setString(2, name);
+                    ps.setInt(3, phone);
+                    ps.setBigDecimal(4, salary);
+                    ps.executeUpdate();
+                }
+            } else {
+                LOGGER.error("Not enough parameters to create developer.");
             }
             if (skills!=null) {
                 try (PreparedStatement ps =
@@ -87,45 +90,45 @@ public class jdbcDeveloperDAO implements DeveloperDAO {
         return developer;
     }
 
-    //public Developer getById(int id) {
-    //    Developer developer = null;
-    //    final String GET_SQL = "select id, name, phone, salary from developers where id = ?";
-    //    final String GET_SKILLS = "SELECT name from skills s join\n" +
-    //            "dev_skill ds on (s.id=ds.skillID)\n" +
-    //            "where devID = ?";
-    //
-    //    try (Connection connection = dataSource.getConnection()) {
-    //        try (PreparedStatement ps = connection.prepareStatement(GET_SQL)) {
-    //            ps.setLong(1, id);
-    //            try (ResultSet resultSet = ps.executeQuery()) {
-    //                if (!resultSet.next()) {
-    //                    return null;
-    //                }
-    //                developer = new Developer();
-    //                developer.setId(resultSet.getInt("id"));
-    //                developer.setName(resultSet.getString("name"));
-    //                developer.setPhone(resultSet.getInt("phone"));
-    //                developer.setSalary(resultSet.getBigDecimal("salary"));
-    //            }
-    //        }
-    //        try (PreparedStatement ps = connection.prepareStatement(GET_SKILLS)) {
-    //            ps.setLong(1, id);
-    //            try (ResultSet resultSet = ps.executeQuery()) {
-    //                Collection<Skill> skills = new ArrayList<>();
-    //                while (resultSet.next()) {
-    //                    Skill skill = new Skill();
-    //                    skill.setName(resultSet.getString("name"));
-    //                    skills.add(skill);
-    //                }
-    //                developer.setSkills(skills);
-    //            }
-    //        }
-    //        return developer;
-    //    } catch(SQLException e){
-    //        LOGGER.error("Exception occurred while connecting to DB");
-    //    }
-    //    return developer;
-    //}
+    public Developer getById(int id) {
+        Developer developer = null;
+        final String GET_SQL = "select id, name, phone, salary from developers where id = ?";
+        final String GET_SKILLS = "SELECT name from skills s join\n" +
+                "dev_skill ds on (s.id=ds.skillID)\n" +
+                "where devID = ?";
+
+        try (Connection connection = dataSource.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(GET_SQL)) {
+                ps.setLong(1, id);
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    if (!resultSet.next()) {
+                        return null;
+                    }
+                    developer = new Developer();
+                    developer.setId(resultSet.getInt("id"));
+                    developer.setName(resultSet.getString("name"));
+                    developer.setPhone(resultSet.getInt("phone"));
+                    developer.setSalary(resultSet.getBigDecimal("salary"));
+                }
+            }
+            try (PreparedStatement ps = connection.prepareStatement(GET_SKILLS)) {
+                ps.setLong(1, id);
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    Collection<Skill> skills = new ArrayList<>();
+                    while (resultSet.next()) {
+                        Skill skill = new Skill();
+                        skill.setName(resultSet.getString("name"));
+                        skills.add(skill);
+                    }
+                    developer.setSkills(skills);
+                }
+            }
+            return developer;
+        } catch(SQLException e){
+            LOGGER.error("Exception occurred while connecting to DB");
+        }
+        return developer;
+    }
 
     public void setDataSource(javax.sql.DataSource dataSource) {
         this.dataSource = dataSource;

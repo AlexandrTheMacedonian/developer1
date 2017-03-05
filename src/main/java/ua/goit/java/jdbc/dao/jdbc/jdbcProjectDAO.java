@@ -1,8 +1,8 @@
-package ua.goit.java.jdbc.model.jdbc;
+package ua.goit.java.jdbc.dao.jdbc;
 
 import ua.goit.java.jdbc.model.Developer;
 import ua.goit.java.jdbc.model.Project;
-import ua.goit.java.jdbc.model.ProjectDAO;
+import ua.goit.java.jdbc.dao.ProjectDAO;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
