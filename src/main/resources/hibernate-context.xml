@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+
+    <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="jdbc.properties"/>
@@ -10,7 +14,6 @@
 
     <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
         <property name="jdbcUrl" value="${jdbc.url}"/>
-        <property name="driverClass" value="${jdbc.driver}"/>
         <property name="user" value="${jdbc.user}"/>
         <property name="password" value="${jdbc.password}"/>
         <property name="minPoolSize" value="${jdbc.min.connections}"/>
@@ -26,6 +29,10 @@
                 hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
             </value>
         </property>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
 </beans>

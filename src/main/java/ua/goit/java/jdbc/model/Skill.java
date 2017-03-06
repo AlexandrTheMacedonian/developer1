@@ -1,8 +1,11 @@
 package ua.goit.java.jdbc.model;
 
+import javax.persistence.Entity;
+
 /**
  * Created by alexandrsemenov on 27.02.17.
  */
+@Entity
 public class Skill {
     private int id;
     private String name;

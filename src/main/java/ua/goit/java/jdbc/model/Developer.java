@@ -1,17 +1,36 @@
 package ua.goit.java.jdbc.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Collection;
 
 /**
  * Created by alexandrsemenov on 27.02.17.
  */
+@Entity
+@Table(name = "developers")
 public class Developer {
+
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
     private int id;
+
+    @ManyToMany
+    @JoinTable(
+            name = "dev_skill",
+            joinColumns = @JoinColumn(name = "devID"),
+            inverseJoinColumns = @JoinColumn (name = "skillID")
+    )
+    private Collection<Skill> skills;
+
     private String name;
     private int phone;
     private BigDecimal salary;
-    private Collection<Skill> skills;
+
 
     @Override
     public String toString() {

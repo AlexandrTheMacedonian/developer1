@@ -21,7 +21,7 @@ public class Main {
     private Controller controller;
 
     public static void main(String[] args) throws SQLException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml", "hibernate-context.xml");
         Main main = context.getBean(Main.class);
         main.start();
     }
