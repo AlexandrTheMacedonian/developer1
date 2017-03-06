@@ -1,4 +1,4 @@
-package ua.goit.java.jdbc.dao.jdbc;
+package ua.goit.java.jdbc.dao;
 
 import ua.goit.java.jdbc.model.Skill;
 
