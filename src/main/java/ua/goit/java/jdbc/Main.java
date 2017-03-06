@@ -27,7 +27,7 @@ public class Main {
     }
 
     private void start() throws SQLException {
-        controller.createDeveloper(15, "Alex", 38088888, new BigDecimal(7500), new ArrayList<>());
+        controller.deleteDeveloper(15);
     }
 
     public void setController(Controller controller) {
