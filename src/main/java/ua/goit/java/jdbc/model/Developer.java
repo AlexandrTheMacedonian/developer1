@@ -33,6 +33,24 @@ public class Developer {
 
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Developer developer = (Developer) o;
+
+        if (phone != developer.phone) return false;
+        return name != null ? name.equals(developer.name) : developer.name == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + phone;
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Developer{" +
                 "id=" + id +

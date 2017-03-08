@@ -10,6 +10,18 @@ public class Skill {
     private int id;
     private String name;
 
+    public Skill(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Skill{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }

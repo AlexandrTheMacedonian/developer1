@@ -40,11 +40,6 @@ public class Controller {
         return projectDAO.getById(id);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
-    public Developer getDeveloperByID(int id) throws SQLException {
-        return developerDAO.getById(id);
-    }
-
 //    public List<Developer> getAllDevelopers() {
 //        TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRED));
 //        try {
