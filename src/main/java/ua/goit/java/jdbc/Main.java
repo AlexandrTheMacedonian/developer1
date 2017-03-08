@@ -21,13 +21,14 @@ public class Main {
     private Controller controller;
 
     public static void main(String[] args) throws SQLException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml", "hibernate-context.xml");
+        //, "hibernate-context.xml"
+        ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
         Main main = context.getBean(Main.class);
         main.start();
     }
 
     private void start() throws SQLException {
-        controller.deleteDeveloper(15);
+        System.out.println(controller.getDeveloperByID(1));
     }
 
     public void setController(Controller controller) {

@@ -20,6 +20,10 @@ public class Controller {
     private jdbcDeveloperDAO developerDAO;
     private jdbcProjectDAO projectDAO;
 
+    public Developer getDeveloperByID(int id){
+        return developerDAO.getById(id);
+    }
+
     public void deleteDeveloper(int id) throws SQLException {
         developerDAO.deleteById(id);
     }

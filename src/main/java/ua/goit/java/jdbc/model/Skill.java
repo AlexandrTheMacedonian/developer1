@@ -15,11 +15,12 @@ public class Skill {
         this.name = name;
     }
 
+    public Skill() {
+    }
+
     @Override
     public String toString() {
-        return "Skill{" +
-                "name='" + name + '\'' +
-                '}';
+        return name;
     }
 
     public int getId() {
