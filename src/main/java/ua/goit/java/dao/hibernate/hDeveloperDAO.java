@@ -1,9 +1,11 @@
-package ua.goit.java.jdbc.dao.hibernate;
+package ua.goit.java.dao.hibernate;
 
 import org.hibernate.SessionFactory;
-import ua.goit.java.jdbc.dao.DeveloperDAO;
-import ua.goit.java.jdbc.model.Developer;
-import ua.goit.java.jdbc.model.Skill;
+import org.hibernate.query.Query;
+import org.springframework.transaction.annotation.Transactional;
+import ua.goit.java.dao.DeveloperDAO;
+import ua.goit.java.model.Developer;
+import ua.goit.java.model.Skill;
 
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -14,23 +16,18 @@ import java.util.Collection;
 public class hDeveloperDAO implements DeveloperDAO {
 
     private SessionFactory sessionFactory;
-    private hSkillDAO skillDAO;
 
     @Override
-    public boolean deleteById(int id) {
-        return false;
-    }
-
-    @Override
+    @Transactional
     public Developer getById(int id) {
-        Developer developer = (Developer) sessionFactory.getCurrentSession()
-                .createQuery("select d from developers d where id = :id")
-                .uniqueResult();
-        developer.setSkills(skillDAO.getAllSkills(id));
-        return developer;
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("select d from Developer d where d.id = :id");
+        query.setParameter("id", id);
+        return (Developer) query.uniqueResult();
     }
 
     @Override
+    @Transactional
     public Developer create(int id, String name, int phone, BigDecimal salary, Collection<Skill> skills) {
         Developer developer = new Developer();
         developer.setId(id);
@@ -40,5 +37,9 @@ public class hDeveloperDAO implements DeveloperDAO {
         developer.setName(name);
         sessionFactory.getCurrentSession().save(developer);
         return developer;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 }

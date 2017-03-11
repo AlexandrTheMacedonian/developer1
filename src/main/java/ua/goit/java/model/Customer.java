@@ -1,4 +1,4 @@
-package ua.goit.java.jdbc.model;
+package ua.goit.java.model;
 
 import java.util.Collection;
 

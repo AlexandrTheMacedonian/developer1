@@ -1,4 +1,4 @@
-package ua.goit.java.jdbc.model;
+package ua.goit.java.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -18,19 +18,15 @@ public class Developer {
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "id")
     private int id;
-
-    @ManyToMany
-    @JoinTable(
-            name = "dev_skill",
-            joinColumns = @JoinColumn(name = "devID"),
-            inverseJoinColumns = @JoinColumn (name = "skillID")
-    )
-    private Collection<Skill> skills;
-
     private String name;
     private int phone;
     private BigDecimal salary;
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "dev_skill",
+            joinColumns = @JoinColumn(name = "devID"),
+            inverseJoinColumns = @JoinColumn (name = "skillID"))
+    private Collection<Skill> skills;
 
     @Override
     public boolean equals(Object o) {

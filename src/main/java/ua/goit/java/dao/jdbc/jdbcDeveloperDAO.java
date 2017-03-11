@@ -1,10 +1,10 @@
-package ua.goit.java.jdbc.dao.jdbc;
+package ua.goit.java.dao.jdbc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ua.goit.java.jdbc.dao.DeveloperDAO;
-import ua.goit.java.jdbc.model.Developer;
-import ua.goit.java.jdbc.model.Skill;
+import ua.goit.java.dao.DeveloperDAO;
+import ua.goit.java.model.Developer;
+import ua.goit.java.model.Skill;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -19,19 +19,6 @@ public class jdbcDeveloperDAO implements DeveloperDAO {
     private javax.sql.DataSource dataSource;
     private static final Logger LOGGER = LoggerFactory.getLogger(jdbcDeveloperDAO.class);
 
-
-    public boolean deleteById(int id) {
-        String SQL = "DELETE FROM developers WHERE id = ?";
-        try (Connection connection = dataSource.getConnection();
-        PreparedStatement ps = connection.prepareStatement(SQL)) {
-            ps.setInt(1, id);
-            ps.executeUpdate(SQL);
-            return true;
-        } catch (SQLException e) {
-            LOGGER.error("Exception occurred while connecting to DB");
-            return false;
-        }
-    }
 
     public Developer create(int id, String name, int phone, BigDecimal salary, Collection<Skill> skills) {
         Developer developer = null;

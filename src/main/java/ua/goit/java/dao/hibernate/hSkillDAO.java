@@ -1,8 +1,8 @@
-package ua.goit.java.jdbc.dao.hibernate;
+package ua.goit.java.dao.hibernate;
 
 import org.hibernate.SessionFactory;
-import ua.goit.java.jdbc.dao.SkillDAO;
-import ua.goit.java.jdbc.model.Skill;
+import ua.goit.java.dao.SkillDAO;
+import ua.goit.java.model.Skill;
 
 import java.util.List;
 

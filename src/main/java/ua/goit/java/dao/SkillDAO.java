@@ -1,6 +1,6 @@
-package ua.goit.java.jdbc.dao;
+package ua.goit.java.dao;
 
-import ua.goit.java.jdbc.model.Skill;
+import ua.goit.java.model.Skill;
 
 import java.util.List;
 

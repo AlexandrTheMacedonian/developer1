@@ -1,24 +1,20 @@
-package ua.goit.java.jdbc.model;
+package ua.goit.java.model;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Created by alexandrsemenov on 28.02.17.
+ * Created by alexandrsemenov on 01.03.17.
  */
-public class Project {
+public class Company {
     private int id;
     private String name;
-    private BigDecimal cost;
     private Collection<Developer> developers;
 
     @Override
     public String toString() {
-        return "Project{" +
+        return "Company{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", cost=" + cost +
                 ", developers=" + developers +
                 '}';
     }
@@ -37,14 +33,6 @@ public class Project {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public BigDecimal getCost() {
-        return cost;
-    }
-
-    public void setCost(BigDecimal cost) {
-        this.cost = cost;
     }
 
     public Collection<Developer> getDevelopers() {

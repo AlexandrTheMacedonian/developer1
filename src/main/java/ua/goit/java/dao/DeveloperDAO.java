@@ -1,7 +1,7 @@
-package ua.goit.java.jdbc.dao;
+package ua.goit.java.dao;
 
-import ua.goit.java.jdbc.model.Developer;
-import ua.goit.java.jdbc.model.Skill;
+import ua.goit.java.model.Developer;
+import ua.goit.java.model.Skill;
 
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -10,7 +10,6 @@ import java.util.Collection;
  * Created by alexandrsemenov on 26.02.17.
  */
 public interface DeveloperDAO {
-    boolean deleteById(int id);
     Developer getById(int id);
     Developer create(int id, String name, int phone, BigDecimal salary, Collection<Skill> skills);
 }

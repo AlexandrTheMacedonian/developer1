@@ -1,12 +1,12 @@
-package ua.goit.java.jdbc.dao.jdbc;
+package ua.goit.java.dao.jdbc;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import ua.goit.java.jdbc.model.Developer;
-import ua.goit.java.jdbc.model.Skill;
+import ua.goit.java.model.Developer;
+import ua.goit.java.model.Skill;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -28,15 +28,15 @@ public class jdbcDeveloperDAOTest {
     }
 
     @Test
-    public void testCreate() throws Exception {
-        org.junit.Assert.assertEquals(createDeveloper(), developerDAO.create(11, "Alex", 38088888, new BigDecimal(55555), createSkills()));
+    public void testCreate() {
+        org.junit.Assert.assertEquals(createDeveloper(), developerDAO.create(17, "Tanya", 380888588, new BigDecimal(55555), createSkills()));
     }
 
     private Developer createDeveloper() {
         Developer developer = new Developer();
-        developer.setId(11);
-        developer.setName("Alex");
-        developer.setPhone(38088888);
+        developer.setId(17);
+        developer.setName("Tanya");
+        developer.setPhone(380888588);
         developer.setSalary(new BigDecimal(55555));
         developer.setSkills(createSkills());
         return developer;
